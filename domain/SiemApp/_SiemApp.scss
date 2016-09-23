@@ -1,0 +1,55 @@
+.SiemInit {
+
+}
+
+.siem-init-container {
+  text-align: center;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+  .siem-logo {
+    height: 10rem;
+  }
+}
+
+.siem-logo {
+  display: inline-block;
+  height: inherit;
+  img {
+    height: inherit;
+  }
+}
+
+.siem-top-panel {
+  height: 50px;
+}
+
+.siem-link {
+  display: inline-block;
+  margin: 0 20px;
+  &.active {
+    font-weight: bold;
+  }
+}
+
+.siem-page {
+  margin-top: 5px;
+  display: block;
+  width: 100vw;
+  height: calc(100vh - 75px);
+  iframe {
+    width: inherit;
+    height: inherit;
+    border: none;
+  }
+}
+
+.error {
+  color: red;
+}
+
+.auth {
+  text-align: center;
+  margin: 30vh;
+}

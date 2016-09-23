@@ -1,0 +1,7 @@
+coverage/*
+node_modules/*
+public/assets/*
+Components/**/*.html
+.idea
+dist
+bower_components

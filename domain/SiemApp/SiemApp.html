@@ -1,0 +1,16 @@
+<div class="SiemInit" ng-controller="SiemApp">
+    <div class="container siem-top-panel">
+        <div class="siem-logo">
+            <img src="/domain/UI/logos/SIEMonster.png" />
+        </div>
+        <div ng-repeat="link in links" class="siem-link" ng-class="{active: vm.active_link == link.title}">
+            <a href="{{ link.url }}" target="{{ link.id }}" ng-click="link.activated && $event.preventDefault(); link.activated = true; vm.active_link = link.title">{{ link.title }}</a>
+        </div>
+        <!--<div class="siem-logout" ng-class="{active: vm.active_link == link.title}">-->
+            <!--<a href="#" >Logout</a>-->
+        <!--</div>-->
+    </div>
+    <div class="page">
+        <dynamic-iframe ng-repeat="link in links" name="{{ link.id }}" class="siem-page" ng-show="vm.active_link == link.title" dynamic-iframe-src="{{ vm.active_link == link.title ? link.url : '' }}"></dynamic-iframe>
+    </div>
+</div>

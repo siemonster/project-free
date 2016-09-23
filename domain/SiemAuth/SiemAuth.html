@@ -1,0 +1,24 @@
+<div class="SiemAuth" ng-controller="SiemAuth">
+    <!--<siem-nav-bar></siem-nav-bar>-->
+    <div class="container siem-top-panel">
+        <div class="siem-logo">
+            <img src="/domain/UI/logos/SIEMonster.png" />
+        </div>
+    </div>
+    <div class="auth">
+        Login:
+        <br/>
+        <input type="string" ng-model="login"/>
+        <br/>
+        <br/>
+        Password:
+        <br/>
+        <input type="password" ng-model="password"/>
+        <br/>
+        <br/>
+        <button ng-click="do_login()">Submit</button>
+        <div class="error">{{message}}</div>
+    </div>
+
+
+</div>
