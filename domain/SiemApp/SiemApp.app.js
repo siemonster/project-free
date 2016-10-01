@@ -1,4 +1,4 @@
-var SiemApp = angular.module('siem-app', ['ui.router', 'ui.bootstrap']);
+var SiemApp = angular.module('siem-app', ['ui.router', 'ui.bootstrap', 'mongoSitesApi']);
 
 SiemApp.directive('dynamicIframe', function($compile) {
     return {

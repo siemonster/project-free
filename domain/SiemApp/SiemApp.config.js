@@ -6,8 +6,12 @@ SiemApp.config(function ($stateProvider, $httpProvider, $urlRouterProvider) {
             templateUrl: '/domain/SiemApp/SiemAppInit.html'
         })
         .state('app', {
-            url: '/app',
+            url: '/app/:linkId',
             templateUrl: '/domain/SiemApp/SiemApp.html'
+        })
+        .state('welcome', {
+            url: '/welcome',
+            templateUrl: '/domain/SiemApp/SiemAppWelcome.html'
         })
     ;
 
@@ -20,7 +24,6 @@ SiemApp.config(function ($stateProvider, $httpProvider, $urlRouterProvider) {
         return {
             request: function (config) {
                 return config;
-
             },
             responseError: function (rejection) {
                 if (rejection.status === 401) {

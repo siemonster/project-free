@@ -1,0 +1,40 @@
+.auth-wrapper {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 60rem;
+}
+
+.auth-logo-container {
+  width: 50%;
+  display: block;
+  padding-top: 3rem;
+  float: left;
+  text-align: center;
+}
+
+.auth-form-container {
+  width: 50%;
+  display: block;
+  float: left;
+  padding: 3rem 0 3rem 4rem;
+  border-left: 1px solid #d0d0d0;
+  label {
+    color: #908f8f;
+  }
+  button {
+    padding: 0.5rem 6rem;
+  }
+}
+
+.auth-forgot-pass {
+  margin-top: 1.5rem;
+  display: block;
+  cursor: pointer;
+}
+
+.auth-login-error {
+  color: red;
+  margin: 1rem 0;
+}
