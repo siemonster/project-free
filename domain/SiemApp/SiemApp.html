@@ -19,4 +19,10 @@
         <dynamic-iframe ng-repeat="link in links" name="{{ link.id }}" class="siem-page"
                         ng-show="vm.active_link == link.title" dynamic-iframe-src="{{ vm.active_link == link.title ? link.url : '' }}"></dynamic-iframe>
     </div>
+    <div class="welcome-container" ng-if="!links || !links.length">
+        <br/>
+        <b>{{ vm.SiemAuth.User._id }}</b> has no dashboards. <br/>
+        <br/>
+        <a href="javascript: void(0)" ng-click="logout()">Logout</a>
+    </div>
 </div>

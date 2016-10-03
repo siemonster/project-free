@@ -2,6 +2,7 @@ SiemApp.controller('SiemApp', function($scope, SiemAuth, $state, $stateParams) {
 
     $scope.vm = {};
     $scope.links = [];
+    $scope.vm.SiemAuth = SiemAuth;
 
     SiemAuth.checkLogin(function(loggedin) {
 
@@ -16,7 +17,7 @@ SiemApp.controller('SiemApp', function($scope, SiemAuth, $state, $stateParams) {
             j++;
         }
 
-        $scope.vm.active_link = $stateParams.linkId ? $scope.links.filter(function(it) { return it.id == $stateParams.linkId })[0].title : $scope.links[0].title;
+        $scope.vm.active_link = (($stateParams.linkId ? $scope.links.filter(function(it) { return it.id == $stateParams.linkId })[0] : $scope.links[0]) || {}).title;
         $scope.$$phase || $scope.$apply();
     });
 

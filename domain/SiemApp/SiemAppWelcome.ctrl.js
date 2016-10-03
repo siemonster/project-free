@@ -7,12 +7,14 @@ SiemApp.controller('SiemAppWelcome', function($scope, SiemAuth, $state) {
 
     SiemAuth.checkLogin(function(loggedin) {
 
+        $scope.vm.loading = false;
+
         if(!loggedin) {
             $state.go('auth');
             return;
         }
 
-        $scope.vm.loading = false;
+        $scope.vm.SiemAuth = SiemAuth;
 
         var j = 1;
         for(var i in SiemAuth.User.frames) if(SiemAuth.User.frames.hasOwnProperty(i)) {
@@ -22,4 +24,11 @@ SiemApp.controller('SiemAppWelcome', function($scope, SiemAuth, $state) {
 
         $scope.$$phase || $scope.$apply();
     });
+
+    $scope.logout = function() {
+        SiemAuth.logout(function() {
+            $state.go('auth');
+        });
+    };
+
 });

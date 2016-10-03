@@ -22,9 +22,16 @@
                     <div class="sk-circle12 sk-circle"></div>
                 </div>
             </div>
-            <div class="dashboard-preview" ng-repeat="link in links">
-                <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
-                <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
+            <div ng-if="!vm.loading">
+                <div class="dashboard-preview" ng-repeat="link in links">
+                    <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
+                    <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
+                </div>
+                <div ng-if="!links || !links.length">
+                    <b>{{ vm.SiemAuth.User._id }}</b> has no dashboards. <br>
+                    <br>
+                    <a ng-click="logout()">Logout</a>
+                </div>
             </div>
         </div>
     </div>

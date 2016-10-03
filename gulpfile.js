@@ -91,3 +91,14 @@ gulp.task('sass-build', function () {
 });
 
 gulp.task('default', ['js-build', 'css-externals-build', 'sass-build']);
+
+
+
+gulp.task('watch'  , ['js-build', 'sass-build', 'css-externals-build'], function () {
+  gulp.watch( '**/*.scss', ['sass-build']);
+  gulp.watch(['**/*.js', '!dist/*.js'], ['js-build']) // decrease CPU usage
+      .on('change', function(file) {
+        console.log('changed', file);
+      });
+});
+
