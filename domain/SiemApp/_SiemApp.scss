@@ -26,6 +26,7 @@
   height: inherit;
   float: left;
   margin-right: 20px;
+  cursor: pointer;
   img {
     height: 90%;
   }
@@ -34,7 +35,7 @@
 .siem-top-panel {
   height: 50px;
   margin: 0;
-  background: #2F3061;
+  background: #6fb14e;
   width: 100%;
 }
 
@@ -48,7 +49,7 @@
     color: #F7FFF7;
   }
   &:hover {
-    background: #6CA6C1;
+    background: #518437;
   }
   &.active {
     font-weight: bold;
