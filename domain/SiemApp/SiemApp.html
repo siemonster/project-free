@@ -1,7 +1,10 @@
 <div class="SiemInit" ng-controller="SiemApp">
     <div class="container siem-top-panel">
-        <div class="siem-logo-menu" ui-sref="welcome">
-            <img src="/domain/UI/logos/SIEMonster_1.png" />
+        <!--<div class="siem-logo-menu" ui-sref="welcome">-->
+            <!--<img src="/domain/UI/logos/SIEMonster_1.png" />-->
+        <!--</div>-->
+        <div class="siem-link">
+            <a ui-sref="welcome">Home</a>
         </div>
         <div ng-repeat="link in links" class="siem-link" ng-class="{active: vm.active_link == link.title}">
             <a href="{{ link.url }}" target="{{ link.id }}"
