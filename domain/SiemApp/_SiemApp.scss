@@ -54,7 +54,7 @@
   &.active {
     font-weight: bold;
     a {
-      color: #FFE66D!important;
+      color: #FFE66D !important;
     }
   }
 }
@@ -85,16 +85,17 @@
   margin: 30vh;
 }
 
-
 .SiemAppWelcome {
-
+  h2, h3 {
+    margin: 2rem 0;
+    font-family: CharlieBrownM54, Helvetica Neue, Helvetica, Arial;
+  }
 }
 
 .sm-welcome-links {
-  max-width: 60rem;
   text-align: center;
   display: inline-block;
-  margin-top: 2rem;
+  //margin-top: 2rem;
 }
 
 .sm-welcome-link {
@@ -123,10 +124,25 @@
   }
 }
 
+.welcome-wrapper {
+  overflow: hidden;
+}
+
+.welcome-right-links {
+  width: 28rem;
+  float: right;
+}
+
+.welcome-left-links {
+  float: left;
+  width: 28rem;
+}
+
 .welcome-container {
+  margin: 0 28rem 0 28rem;
   text-align: center;
   .siem-logo {
     max-width: 280px;
-    margin-top: 100px;
+    margin-top: 5rem;
   }
 }

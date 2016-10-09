@@ -1,37 +1,72 @@
 <div ng-controller="SiemAppWelcome" class="SiemAppWelcome">
-    <div class="container welcome-container">
-        <div class="siem-logo">
-            <img src="/domain/UI/logos/SIEMonster_1.png" />
+    <div class="container siem-top-panel">
+        <div class="siem-link">
+            <a ui-sref="welcome">Home</a>
         </div>
-        <h2>Welcome to SIEM!</h2>
+        <div ng-repeat="link in links" class="siem-link">
+            <a ui-sref="app({linkId: link.id})">{{ link.title }}</a>
+        </div>
+        <div class="siem-link logout-link">
+            <a ng-click="logout()">Logout</a>
+        </div>
+    </div>
 
-        <div class="sm-welcome-links">
-            <div ng-if="vm.loading">
-                <div class="sk-fading-circle">
-                    <div class="sk-circle1 sk-circle"></div>
-                    <div class="sk-circle2 sk-circle"></div>
-                    <div class="sk-circle3 sk-circle"></div>
-                    <div class="sk-circle4 sk-circle"></div>
-                    <div class="sk-circle5 sk-circle"></div>
-                    <div class="sk-circle6 sk-circle"></div>
-                    <div class="sk-circle7 sk-circle"></div>
-                    <div class="sk-circle8 sk-circle"></div>
-                    <div class="sk-circle9 sk-circle"></div>
-                    <div class="sk-circle10 sk-circle"></div>
-                    <div class="sk-circle11 sk-circle"></div>
-                    <div class="sk-circle12 sk-circle"></div>
-                </div>
+    <div class="welcome-wrapper">
+        <div class="welcome-left-links">
+            <div class="dashboard-preview" ng-repeat="link in links track by $index" ng-if="$index%2==1">
+                <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
+                <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
             </div>
-            <div ng-if="!vm.loading">
-                <div class="dashboard-preview" ng-repeat="link in links">
-                    <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
-                    <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
+        </div>
+        <div class="welcome-right-links">
+            <div class="dashboard-preview" ng-repeat="link in links track by $index" ng-if="$index%2==0">
+                <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
+                <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
+            </div>
+        </div>
+
+        <div class="welcome-container">
+            <div class="siem-logo">
+                <img src="/domain/UI/logos/SIEMonster_1.png" />
+            </div>
+            <h2>A SIEM For Everyone!</h2>
+
+            <div class="sm-welcome-links">
+                <div ng-if="vm.loading">
+                    <div class="sk-fading-circle">
+                        <div class="sk-circle1 sk-circle"></div>
+                        <div class="sk-circle2 sk-circle"></div>
+                        <div class="sk-circle3 sk-circle"></div>
+                        <div class="sk-circle4 sk-circle"></div>
+                        <div class="sk-circle5 sk-circle"></div>
+                        <div class="sk-circle6 sk-circle"></div>
+                        <div class="sk-circle7 sk-circle"></div>
+                        <div class="sk-circle8 sk-circle"></div>
+                        <div class="sk-circle9 sk-circle"></div>
+                        <div class="sk-circle10 sk-circle"></div>
+                        <div class="sk-circle11 sk-circle"></div>
+                        <div class="sk-circle12 sk-circle"></div>
+                    </div>
                 </div>
-                <div ng-if="!links || !links.length">
-                    <b>{{ vm.SiemAuth.User._id }}</b> has no dashboards. <br>
-                    <br>
-                    <a ng-click="logout()">Logout</a>
+                <div ng-if="!vm.loading">
+
+                    <div class="sm-welcome-image">
+                        <img src="/domain/SiemApp/LandingPageImage.png" />
+                    </div>
+
+                    <!--<div class="dashboard-preview" ng-repeat="link in links">-->
+                        <!--<div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>-->
+                        <!--<dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>-->
+                    <!--</div>-->
+                    <!--<div ng-if="!links || !links.length">-->
+                        <!--<b>{{ vm.SiemAuth.User._id }}</b> has no dashboards. <br>-->
+                        <!--<br>-->
+                        <!--<a ng-click="logout()">Logout</a>-->
+                    <!--</div>-->
+                    <h3>SIEMonster is a turnkey, open source, enterprise grade Security Incident and Event Management (SIEM), built on scalable, non-licensed components.</h3>
                 </div>
+
+
             </div>
         </div>
     </div>
