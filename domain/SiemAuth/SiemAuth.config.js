@@ -13,5 +13,9 @@ SiemApp.config(function ($stateProvider) {
             url: '/reset_password',
             templateUrl: '/domain/SiemAuth/SiemResetPassword.html'
         })
+        .state('profile', {
+            url: '/profile',
+            templateUrl: '/domain/SiemAuth/SiemProfile.html'
+        })
     ;
 });

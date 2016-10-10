@@ -9,12 +9,22 @@
         <div class="siem-link logout-link">
             <a ng-click="logout()">Logout</a>
         </div>
+        <div class="siem-link logout-link">
+            <a ui-sref="profile">Profile</a>
+        </div>
     </div>
 
     <div class="welcome-wrapper">
         <div class="welcome-left-links">
-            <div class="dashboard-preview" ng-repeat="link in links track by $index" ng-if="$index%2==1">
-                <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
+            <div class="dashboard-preview dropdown" ng-repeat="link in links track by $index" ng-if="$index%2==1" ng-class="'dropdown'">
+                <div class="sm-welcome-link btn btn-default" ui-sssref="app({linkId: link.id})">{{link.title}}<span class="caret"></span></div>
+                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
+                    <li role="presentation" class="divider"></li>
+                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
+                </ul>
                 <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
             </div>
         </div>
@@ -29,7 +39,10 @@
             <div class="siem-logo">
                 <img src="/domain/UI/logos/SIEMonster_1.png" />
             </div>
-            <h2>A SIEM For Everyone!</h2>
+            <!--<h2>A SIEM For Everyone!</h2>-->
+            <br/>
+            <br/>
+            <br/>
 
             <div class="sm-welcome-links">
                 <div ng-if="vm.loading">
@@ -63,7 +76,8 @@
                         <!--<br>-->
                         <!--<a ng-click="logout()">Logout</a>-->
                     <!--</div>-->
-                    <h3>SIEMonster is a turnkey, open source, enterprise grade Security Incident and Event Management (SIEM), built on scalable, non-licensed components.</h3>
+                    <!--<h3>SIEMonster is a turnkey, open source, enterprise grade Security Incident and Event Management (SIEM), built on scalable, non-licensed components.</h3>-->
+                    <h3>A SIEM For Everyone!</h3>
                 </div>
 
 

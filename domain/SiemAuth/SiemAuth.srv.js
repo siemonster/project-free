@@ -67,7 +67,7 @@ SiemApp.service('SiemAuth', function ($mongoSitesApi, $state) {
                     _this.loggedInPromiseSuccess();
                 }
 
-                cb(logged_in);
+                cb && cb(logged_in);
             });
     };
 

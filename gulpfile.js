@@ -60,7 +60,7 @@ gulp.task('js-build', function () {
 				.replaceAll('\\','/') // fix paths for windows
 			+ '"><\/script>\')') }))
 		.pipe(concat(pkg.name + '.js', {newLine: '\n;'}))
-		.pipe(running_task == 'js-build' ? _bypass() : uglify())
+		.pipe(running_task != 'js-build' ? _bypass() : uglify())
 		.pipe(sourcemaps.write('.'))
 		.pipe(gulp.dest('dist'))
 		.on('end', function () {
@@ -96,7 +96,7 @@ gulp.task('default', ['js-build', 'css-externals-build', 'sass-build']);
 
 gulp.task('watch'  , ['js-build', 'sass-build', 'css-externals-build'], function () {
   gulp.watch( '**/*.scss', ['sass-build']);
-  gulp.watch(['**/*.js', '!dist/*.js'], ['js-build']) // decrease CPU usage
+  gulp.watch(['**/*.js', '!dist/*.js', '**/*.html'], ['js-build']) // decrease CPU usage
       .on('change', function(file) {
         console.log('changed', file);
       });

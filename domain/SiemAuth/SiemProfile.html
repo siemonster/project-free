@@ -1,20 +1,31 @@
-<div class="SiemAuth" ng-controller="SiemResetPassword">
+<div class="SiemAuth" ng-controller="SiemProfile">
     <div class="auth-wrapper">
         <div class="siem-logo auth-logo-container">
             <img src="/domain/UI/logos/SIEMonster_1.png" />
         </div>
 
         <div class="auth-form-container" ng-if="!am.sent && !am.token">
+            <a href="#/" class="btn btn-info">Back</a>
             <form>
                 <div class="form-group">
-                    <h5>Enter your email address and we will send you a link to reset your password.</h5>
+                    <h3>Profile {{SiemAuth.User._id}}</h3>
+                    <h5>Enter your old password:</h5>
                     <!--<label for="exampleInputEmail1">EMAIL</label>-->
-                    <input type="text" class="form-control" id="exampleInputEmail1" ng-model="am.login" placeholder="Enter your email" />
+                    <input type="password" class="form-control" ng-model="am.old_password" placeholder="Old password" />
                     <br/>
-                    <div class="g-recaptcha" data-sitekey="6LdCtggUAAAAAALmWtTYZhJ63QM_gSu9dgY3PPxo"></div>
+                    <h5>Enter new password 2 times:</h5>
+                    <!--<label for="exampleInputEmail1">EMAIL</label>-->
+                    <input type="password" class="form-control" ng-model="am.password" placeholder="Password" />
+                    <br/>
+                    <input type="password" class="form-control" ng-model="am.password_check" placeholder="Password again" />
+                    <br/>
+                    <div ng-if="am.password != am.password_check" class="auth-login-error">Passwords does not match</div>
                 </div>
-                <div class="auth-login-error">{{am.login_error}}</div>
-                <button type="submit" class="btn btn-success" ng-click="requestResetPassword()">Send password reset email</button>
+                <div class="auth-login-error">{{am.error}}</div>
+                <div class="auth-login-error">{{am.success}}</div>
+                <button type="submit" class="btn btn-success" ng-click="requestChangePassword()"
+                        ng-disabled="!am.password || !am.password_check || !am.old_password || am.password != am.password_check"
+                >Change password</button>
                 <!--<a class="auth-forgot-pass" ui-sref="auth.reset_password">Forgot password?</a>-->
             </form>
         </div>

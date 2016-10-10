@@ -7,10 +7,15 @@ SiemApp.controller('SiemResetPassword', function($scope, $mongoSitesApi, $state)
         token: (location.hash.match(/\?token=(.+)/) || [] )[1]
     };
 
+    setTimeout(function() {
+        var el = document.querySelector('.g-recaptcha');
+        grecaptcha.render(el, {sitekey: el.getAttribute('data-sitekey')});
+    }, 0);
+
     $scope.requestResetPassword = function() {
 
 
-        $mongoSitesApi.auth_request_reset_password({_id: $scope.am.login}, function() { console.log('don') }).then(function(data) {
+        $mongoSitesApi.auth_request_reset_password({_id: $scope.am.login, "g-recaptcha-response": grecaptcha.getResponse()  }, function() { console.log('don') }).then(function(data) {
             console.log('con');
             $scope.am.sent = true;
             $scope.$$phase || $scope.$apply();

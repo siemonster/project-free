@@ -107,7 +107,7 @@
 }
 
 .dashboard-preview {
-  width: 25rem;
+  width: 12vw;
   display: inline-block;
   margin: 1rem 1.5rem;
   dynamic-iframe {
@@ -129,20 +129,25 @@
 }
 
 .welcome-right-links {
-  width: 28rem;
+  width: 30vw;
   float: right;
 }
 
 .welcome-left-links {
   float: left;
-  width: 28rem;
+  width: 30vw;
 }
 
 .welcome-container {
-  margin: 0 28rem 0 28rem;
+  margin: 0 30vw;
   text-align: center;
   .siem-logo {
     max-width: 280px;
     margin-top: 5rem;
+  }
+  .sm-welcome-links {
+    img {
+      width: 30vw;
+    }
   }
 }
