@@ -18,7 +18,11 @@ SiemApp.controller('SiemAppWelcome', function($scope, SiemAuth, $state) {
 
         var j = 1;
         for(var i in SiemAuth.User.frames) if(SiemAuth.User.frames.hasOwnProperty(i)) {
-            $scope.links.push({title: i, url: SiemAuth.User.frames[i], id: 'link' + j});
+            if(typeof SiemAuth.User.frames[i] == 'string') {
+                $scope.links.push({title: i, url: SiemAuth.User.frames[i], id: 'link' + j});
+            } else if (typeof SiemAuth.User.frames[i] == 'object') {
+                $scope.links.push({title: i, url: SiemAuth.User.frames[i].url, id: 'link' + j, sub_links: SiemAuth.User.frames[i].sub_links});
+            }
             j++;
         }
 

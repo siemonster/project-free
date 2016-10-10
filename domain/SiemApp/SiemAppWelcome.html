@@ -16,21 +16,32 @@
 
     <div class="welcome-wrapper">
         <div class="welcome-left-links">
-            <div class="dashboard-preview dropdown" ng-repeat="link in links track by $index" ng-if="$index%2==1" ng-class="'dropdown'">
-                <div class="sm-welcome-link btn btn-default" ui-sssref="app({linkId: link.id})">{{link.title}}<span class="caret"></span></div>
-                <ul class="dropdown-menu" role="menu" aria-labelledby="menu1">
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">HTML</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">CSS</a></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">JavaScript</a></li>
-                    <li role="presentation" class="divider"></li>
-                    <li role="presentation"><a role="menuitem" tabindex="-1" href="#">About Us</a></li>
-                </ul>
+            <div ng-repeat="link in links track by $index" ng-if="$index%2==1" class="dashboard-preview-wrapper">
+                <div class="dashboard-preview" ng-if="!link.sub_links">
+                    <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
+                </div>
+                <div class="dashboard-preview dropdown" dropdown-append-to-body uib-dropdown is-open="status.isopen"
+                     ng-class="'dropdown'" ng-if="link.sub_links" >
+                    <div class="sm-welcome-link btn btn-default" uib-dropdown-toggle>{{link.title}}&nbsp;<span class="caret"></span></div>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                        <li role="presentation" ng-repeat="slink in link.sub_links"><a role="menuitem" target="_blank" ng-href="{{slink.url}}">{{slink.title}}</a></li>
+                    </ul>
+                </div>
                 <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
             </div>
         </div>
         <div class="welcome-right-links">
-            <div class="dashboard-preview" ng-repeat="link in links track by $index" ng-if="$index%2==0">
-                <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
+            <div ng-repeat="link in links track by $index" ng-if="$index%2==0" class="dashboard-preview-wrapper">
+                <div class="dashboard-preview" ng-if="!link.sub_links">
+                    <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.id})">{{link.title}}</div>
+                </div>
+                <div class="dashboard-preview dropdown" dropdown-append-to-body uib-dropdown is-open="status.isopen"
+                     ng-class="'dropdown'" ng-if="link.sub_links" >
+                    <div class="sm-welcome-link btn btn-default" uib-dropdown-toggle>{{link.title}}&nbsp;<span class="caret"></span></div>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                        <li role="presentation" ng-repeat="slink in link.sub_links"><a role="menuitem" target="_blank" ng-href="{{link.url}}">{{slink.title}}</a></li>
+                    </ul>
+                </div>
                 <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
             </div>
         </div>
