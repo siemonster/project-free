@@ -34,6 +34,7 @@ $ ./autogen.sh
 $ ./configure
 $ make
 $ sudo make install
+```
 
 ## Deploying the application
 
