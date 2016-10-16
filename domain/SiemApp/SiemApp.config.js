@@ -6,7 +6,7 @@ SiemApp.config(function ($stateProvider, $httpProvider, $urlRouterProvider) {
             templateUrl: '/domain/SiemApp/SiemAppInit.html'
         })
         .state('app', {
-            url: '/app/:linkId',
+            url: '/app/:linkId/:slinkId',
             templateUrl: '/domain/SiemApp/SiemApp.html'
         })
         .state('welcome', {

@@ -24,7 +24,8 @@
                      ng-class="'dropdown'" ng-if="link.sub_links" >
                     <div class="sm-welcome-link btn btn-default" uib-dropdown-toggle>{{link.title}}&nbsp;<span class="caret"></span></div>
                     <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                        <li role="presentation" ng-repeat="slink in link.sub_links"><a role="menuitem" target="_blank" ng-href="{{slink.url}}">{{slink.title}}</a></li>
+                        <li role="presentation" ng-repeat="slink in link.sub_links track by $index">
+                            <a role="menuitem" ui-sref="app({linkId: link.id, slinkId: $index})">{{slink.title}}</a></li>
                     </ul>
                 </div>
                 <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
@@ -39,7 +40,8 @@
                      ng-class="'dropdown'" ng-if="link.sub_links" >
                     <div class="sm-welcome-link btn btn-default" uib-dropdown-toggle>{{link.title}}&nbsp;<span class="caret"></span></div>
                     <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                        <li role="presentation" ng-repeat="slink in link.sub_links"><a role="menuitem" target="_blank" ng-href="{{link.url}}">{{slink.title}}</a></li>
+                        <li role="presentation" ng-repeat="slink in link.sub_links track by $index">
+                            <a role="menuitem" ui-sref="app({linkId: link.id, slinkId: $index})">{{slink.title}}</a></li>
                     </ul>
                 </div>
                 <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
@@ -90,8 +92,6 @@
                     <!--<h3>SIEMonster is a turnkey, open source, enterprise grade Security Incident and Event Management (SIEM), built on scalable, non-licensed components.</h3>-->
                     <h3>A SIEM For Everyone!</h3>
                 </div>
-
-
             </div>
         </div>
     </div>
