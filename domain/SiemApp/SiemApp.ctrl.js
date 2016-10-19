@@ -28,13 +28,13 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
 
         if ($stateParams.slinkId) {
             var link = $scope.links.filter(function (it) {
-                return it.id == $stateParams.linkId
+                return it.title == $stateParams.linkId
             })[0];
 
             $scope.vm.active_link = link.sub_links[$stateParams.slinkId].title;
         } else if ($stateParams.linkId) {
             $scope.vm.active_link = $scope.links.filter(function (it) {
-                return it.id == $stateParams.linkId
+                return it.title == $stateParams.linkId
             })[0].title;
         } else {
             $scope.vm.active_link = ($scope.links[0] || {}).title;
@@ -55,13 +55,13 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
             if (link = $scope.links.filter(function (it) {
                     return it.title == nV
                 })[0]) {
-                $state.go('app', {linkId: link.id, slinkId: null}, {notify: false});
+                $state.go('app', {linkId: link.title, slinkId: null}, {notify: false});
             } else {
                 for (var i = 0; i < $scope.links.length; i++) {
                     if ($scope.links[i].sub_links && (link = $scope.links[i].sub_links.filter(function (it) {
                             return it.title == nV
                         })[0])) {
-                        $state.go('app', {slinkId: $scope.links[i].sub_links.indexOf(link)}, {notify: false});
+                        $state.go('app', {slinkId: link.title}, {notify: false});
                         break;
                     }
                 }
