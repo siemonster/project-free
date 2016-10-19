@@ -61,7 +61,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                     if ($scope.links[i].sub_links && (link = $scope.links[i].sub_links.filter(function (it) {
                             return it.title == nV
                         })[0])) {
-                        $state.go('app', {slinkId: link.title}, {notify: false});
+                        $state.go('app', {linkId: $scope.links[i].title, slinkId: link.title}, {notify: false});
                         break;
                     }
                 }
