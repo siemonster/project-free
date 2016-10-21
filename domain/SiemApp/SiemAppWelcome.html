@@ -4,7 +4,7 @@
             <a ui-sref="welcome">Home</a>
         </div>
         <div ng-repeat="link in links" class="siem-link">
-            <a ui-sref="app({linkId: link.id})">{{ link.title }}</a>
+            <a ui-sref="app({linkId: link.title})">{{ link.title }}</a>
         </div>
         <div class="siem-link logout-link">
             <a ng-click="logout()">Logout</a>
