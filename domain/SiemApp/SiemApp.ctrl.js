@@ -31,7 +31,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                 return it.title == $stateParams.linkId
             })[0];
 
-            $scope.vm.active_link = link.sub_links[$stateParams.slinkId].title;
+            $scope.vm.active_link = link.sub_links.filter(function(it){ return it.title == $stateParams.slinkId })[0].title;
         } else if ($stateParams.linkId) {
             $scope.vm.active_link = $scope.links.filter(function (it) {
                 return it.title == $stateParams.linkId
