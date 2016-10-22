@@ -28,7 +28,7 @@ String.prototype.replaceAll = function(search, replacement) {
 
 var path_libs_js = [
 	// libs
-	'bower_components/es6-promise/es6-promise.js',
+	'bower_components/es6-promise/es6-promise.auto.js',
 	'bower_components/angular/angular.min.js',
 
 	// angular modules
