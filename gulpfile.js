@@ -93,8 +93,6 @@ gulp.task('sass-build', function () {
 
 gulp.task('default', ['js-build', 'css-externals-build', 'sass-build']);
 
-
-
 gulp.task('watch'  , ['js-build', 'sass-build', 'css-externals-build'], function () {
   gulp.watch( '**/*.scss', ['sass-build']);
   gulp.watch(['**/*.js', '!dist/*.js', '**/*.html'], ['js-build']) // decrease CPU usage

@@ -28,7 +28,7 @@
                             <a role="menuitem" ui-sref="app({linkId: link.title, slinkId: slink.title})">{{slink.title}}</a></li>
                     </ul>
                 </div>
-                <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
+                <dynamic-iframe dynamic-iframe-src="{{link.url}}" id="{{link.type}}"></dynamic-iframe>
             </div>
         </div>
         <div class="welcome-right-links">
@@ -44,7 +44,7 @@
                             <a role="menuitem" ui-sref="app({linkId: link.title, slinkId: slink.title})">{{slink.title}}</a></li>
                     </ul>
                 </div>
-                <dynamic-iframe dynamic-iframe-src="{{link.url}}"></dynamic-iframe>
+                <dynamic-iframe dynamic-iframe-src="{{link.url}}" id="{{link.type}}"></dynamic-iframe>
             </div>
         </div>
 

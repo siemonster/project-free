@@ -21,7 +21,16 @@ SiemApp.controller('SiemAppWelcome', function($scope, SiemAuth, $state) {
             if(typeof SiemAuth.User.frames[i] == 'string') {
                 $scope.links.push({title: i, url: SiemAuth.User.frames[i], id: 'link' + j});
             } else if (typeof SiemAuth.User.frames[i] == 'object') {
-                $scope.links.push({title: i, url: SiemAuth.User.frames[i].url, id: 'link' + j, sub_links: SiemAuth.User.frames[i].sub_links});
+
+                $scope.links.push({
+                      title: i
+                    , type: SiemAuth.User.frames[i].type || ''
+                    , login: SiemAuth.User.frames[i].login || ''
+                    , password: SiemAuth.User.frames[i].password || ''
+                    , url: SiemAuth.User.frames[i].url
+                    , id: 'link' + j
+                    , sub_links: SiemAuth.User.frames[i].sub_links || null
+                });
             }
             j++;
         }
