@@ -13,6 +13,6 @@ COPY ./bower.json /root/acembly/bower.json
 RUN cd /root/acembly; bower update --allow-root
 
 COPY . /root/acembly
-RUN cd /root/acembly; gulp prod
+RUN cd /root/acembly; gulp
 
 CMD cd /root/acembly; node server.js
