@@ -4,7 +4,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
     $scope.links = [];
     $scope.vm.SiemAuth = SiemAuth;
 
-    var handlers411, handlers_ir;
+    var handlers411, handlers_ir, handlers_minemeld;
 
     function createQueue(array) {
         array.reduce(function (current, next) {
@@ -28,7 +28,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
 
                     (function waitForWindowReady() {
                         if (!ready) {
-                            iframe_el.contentWindow.postMessage('top.postMessage("ready", "*")', '*');
+                            iframe_el.contentWindow.postMessage('console.log(window.disableAgent);if(!window.disableAgent)top.postMessage("ready", "*")', '*');
                             setTimeout(waitForWindowReady, 250);
                         }
                     })();
@@ -104,7 +104,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                     window.removeEventListener('message', eh);
                     resolve(e);
 
-                    if(e.data == 'page_reload') reject(e);
+                    //if(e.data == 'page_reload') reject(e);
                 }, false);
             });
         };
@@ -200,6 +200,80 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                         }
                     }
                 ];
+            } else if (link.type == 'minemeld') {
+                handlers_minemeld = [
+                    { // wait
+                        fn: function() {
+                            return waitIframeIdReady(document.querySelector('iframe[src="' + link.url + '"]'));
+                        }
+                    },
+                    {
+                        fn: function() {
+                            return new serializable_operation(
+                                function () { // will be executed in iframe
+                                    (function waitForAngular() {
+                                        if(!window.angular) setTimeout(waitForAngular, 150);
+                                        else {
+                                            disableAgent = true;
+                                            window.angular.reloadWithDebugInfo();
+                                            top.postMessage('Reloading angular', '*');
+                                        }
+                                    })();
+                                },
+                                link
+                            ).postToFrame('iframe[src="' + link.url + '"]');
+                        }
+                    },
+                    {
+                        fn: function() {
+                            return new Promise(function(res, rej) {
+                                setTimeout(function() {res()}, 1000);
+                            })
+                        }
+                    },
+                    { // wait
+                        fn: function() {
+                            return waitIframeIdReady(document.querySelector('iframe[src="' + link.url + '"]'));
+                        }
+                    },
+                    {
+                        fn: function() {
+                            return new serializable_operation(
+                                function () { // will be executed in iframe
+                                    (function waitForAngular() {
+                                        if(!window.angular) setTimeout(waitForAngular, 150);
+                                        else {
+                                            top.postMessage('Angular ready', '*');
+                                            //window.angular.reloadWithDebugInfo();
+                                        }
+                                    })();
+                                },
+                                link
+                            ).postToFrame('iframe[src="' + link.url + '"]');
+                        }
+                    },
+                    {
+                        fn: function() {
+                            return new serializable_operation(
+                                function (link) {
+                                    (function waitFormOrLogoutButton() {
+
+                                        if (document.querySelector('#username') && document.querySelector('#username').getBoundingClientRect()) {
+                                            angular.element(document.querySelector('#username')).scope().login.username = link.login;
+                                            angular.element(document.querySelector('#password')).scope().login.password = link.password;
+                                            $('#login-form button').trigger('click');
+                                        } else if(document.querySelector('a[title="logout"]')) {
+                                            console.log('Nothing to do...');
+                                        } else {
+                                            setTimeout(waitFormOrLogoutButton, 250);
+                                        }
+                                    })();
+                                },
+                                link
+                            ).postToFrame('iframe[src="' + link.url + '"]')
+                        }
+                    }
+                ];
             }
         });
 
@@ -236,6 +310,15 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                                 setTimeout(waitHandlers, 150);
                             } else {
                                 createQueue(handlers_ir);
+                            }
+                        })();
+                        break;
+                    case 'minemeld':
+                        (function waitHandlers() {
+                            if(!handlers_minemeld.length) {
+                                setTimeout(waitHandlers, 150);
+                            } else {
+                                createQueue(handlers_minemeld);
                             }
                         })();
                         break;
