@@ -17,7 +17,7 @@ SiemApp.config(function ($stateProvider, $httpProvider, $urlRouterProvider) {
 
     $urlRouterProvider.otherwise(function ($injector) {
         var $state = $injector.get("$state");
-        $state.go("init");
+        $state.go("welcome");
     });
 
     $httpProvider.interceptors.push(function ($q) {

@@ -1,7 +1,9 @@
-SiemApp.controller('SiemAppInit', function($scope, $location) {
+SiemApp.controller('SiemAppInit', function($scope, $state) {
     if(localStorage.loggedIn) {
-        $location.path('/app');
+        $state.go('/app');
     } else {
         $location.path('/auth');
     }
+
+    $state.go('welcome');
 });
