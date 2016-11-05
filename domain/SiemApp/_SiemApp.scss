@@ -37,6 +37,7 @@
   margin: 0;
   background: #6fb14e;
   width: 100%;
+  position: fixed;
 }
 
 .siem-menu-sublinks {
@@ -157,7 +158,11 @@
 }
 
 .welcome-wrapper {
-  overflow: hidden;
+  position: absolute;
+  top: 50px;
+  //bottom: 50px;
+  width: 100%;
+  height: calc(100% - 100px);
 }
 
 .welcome-right-links {
@@ -169,6 +174,7 @@
 .welcome-left-links {
   float: left;
   width: 30vw;
+  margin-bottom: 50px;
 }
 
 .welcome-container {
@@ -183,4 +189,23 @@
       width: 30vw;
     }
   }
+}
+
+.footer-wrapper {
+  height: 50px;
+  margin: 0;
+  background: #6fb14e;
+  width: 100%;
+  position: fixed;
+  bottom: 0;
+}
+
+.footer-copyrights {
+  display: block;
+  padding: 0 20px;
+  float: right;
+  height: inherit;
+  position: relative;
+  line-height: 4.8rem;
+  color: #F7FFF7;
 }
