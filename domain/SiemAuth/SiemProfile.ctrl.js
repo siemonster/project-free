@@ -4,12 +4,10 @@ SiemApp.controller('SiemProfile', function($scope, $mongoSitesApi, $state, SiemA
 
     $scope.am = {};
 
-
     $scope.requestChangePassword = function() {
-        $mongoSitesApi.auth_update({
-            _id: SiemAuth.User._id,
+        $mongoSitesApi.auth_change_password({
             old_password: $scope.am.old_password,
-            password: $scope.am.password
+            new_password: $scope.am.password
         })
     }
 
