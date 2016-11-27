@@ -10,7 +10,10 @@ app.use(compress());
 
 app.get('/', function(req, res) {
     fs.readFile('./domain/index.html', function (err, data) {
-        res.send( data.toString().replace(/\{ACEMBLY_API_URL\}/g, process.env.ACEMBLY_API_URL || 'http://localhost') );
+        res.send( data.toString()
+            .replace(/\{SITE_NAME\}/g, process.env.SITE_NAME || '')
+            .replace(/\{MSA_URL\}/g  , process.env.MSA_URL   || '')
+        );
     });
 });
 

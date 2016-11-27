@@ -1,6 +1,6 @@
 container_name=admin
 
-docker pull extremeprog/mongo-sites-api:tdd
+docker pull extremeprog/mongo-sites-api
 
 docker build -t siemonster-admin admin/
 
