@@ -6,3 +6,4 @@ Components/**/*.html
 dist
 bower_components
 *.log
+dbinitcheck.txt
