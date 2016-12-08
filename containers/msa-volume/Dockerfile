@@ -1,5 +1,7 @@
 FROM extremeprog/mongo-sites-api
 
+RUN apt-get update; apt-get install -y --force-yes wget
+
 RUN wget https://github.com/siemonster/AWS/raw/master/mongobck.tar.gz
 RUN tar -zxvf mongobck.tar.gz
 
