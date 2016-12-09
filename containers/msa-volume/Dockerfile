@@ -7,5 +7,5 @@ RUN tar -zxvf mongobck.tar.gz
 
 RUN mv var/lib/mongo-sites-api/mongodb/* /var/lib/mongodb/
 
-VOLUME /var/lib/mongodb
+#VOLUME /var/lib/mongodb
 CMD /bin/true
