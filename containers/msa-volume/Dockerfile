@@ -1,4 +1,4 @@
-FROM extremeprog/mongo-sites-api
+FROM extremeprog/mongo-sites-api:feature-admin-dbclone
 
 RUN apt-get update; apt-get install -y --force-yes wget
 
