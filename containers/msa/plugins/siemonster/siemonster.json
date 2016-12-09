@@ -1,0 +1,23 @@
+{
+  "title": "SIEMonster MSA plugin",
+  "register_email": [
+    [
+      {},
+      {},
+      {
+        "subject": "SIEMonster: please confirm your email",
+        "html": "siemonster_register.html"
+      }
+    ]
+  ],
+  "reset_password_email": [
+    [
+      {},
+      {},
+      {
+        "subject": "SIEMonster: password reset request",
+        "html": "siemonster_reset_password.html"
+      }
+    ]
+  ]
+}
