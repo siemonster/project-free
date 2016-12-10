@@ -8,6 +8,6 @@ RUN tar -zxvf mongobck.tar.gz
 RUN mv var/lib/mongo-sites-api/mongodb/* /var/lib/mongodb/
 
 ARG ADDITIONAL_COMMAND=/bin/true
-RUN $ADDITIONAL_COMMAND
+RUN bash -c "$ADDITIONAL_COMMAND"
 
 CMD /bin/true
