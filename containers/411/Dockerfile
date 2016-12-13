@@ -1,4 +1,4 @@
 FROM ikuturso/siemonster-411
 COPY wrap_startup.sh /wrap_startup.sh
-RUN chmod +x
+RUN chmod +x /wrap_startup.sh
 CMD /wrap_startup.sh
