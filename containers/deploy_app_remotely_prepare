@@ -1,6 +1,0 @@
-#!/bin/bash
-
-mkdir -p ./app/root/app
-
-rsync -r --exclude='.idea' --exclude='.git' --exclude='platforms' --exclude='plugins' --exclude='node_modules' --exclude='containers' --exclude='bower_components' --delete-excluded ../ ./app/root/app
-
