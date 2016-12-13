@@ -1,0 +1,62 @@
+# The port in which skedler runs
+port: 3000
+
+# The host to bind the skedler server to.
+host: "0.0.0.0"
+
+# Kibana url specification
+Kibana_url: "http://siemonster.corp.zenefits.com/#/app/Dashboards/"
+
+# The Elasticsearch instance to use for all your queries.
+elasticsearch_url: "http://es-client:9200"
+
+# Skedler index which will be created in elasticsearch.  It will create a new index if it doesn't already exist.
+skedler_index: ".skedler2"
+
+#Kibana uses an index in Elasticsearch to all data. Configure kibana index here. skedler will use this index to auto discover dashbaords.
+#skedler will not create this index
+kibana_index: ".kibi"
+
+#Kibana version is needed to get kibana config for report generation
+kibana_version: "4.5.4"
+
+#kibana dashboard load time is the approximate load time provided by Skelder for Kibana to generate the dashboards.
+#If reports are not fully loaded, configure(increase) the load time(in milliseconds) here so that Skedler provides adequate time for Kibana to load the dashboard.
+#Default value is 10 seconds(10000 milliseconds).
+load_time: 10000
+
+#Shield Support
+# If kibana shield plugin is installed in Kibana please set this variable as "yes".
+# Kibana shield plugin is installed in kibana to connect to elasticsearch shield.
+# If kibana doesn't have shield plugin and elasticsearch is configured with shield, set this variable to no and please set the next section
+
+kibana_shield_plugin: no
+
+#If Elastic search uses shield or basic auth, add the shield user name and password here for skedler
+#skedler_elasticsearch_username: user
+#skedler_elasticsearch_password: pass
+
+#If Elastic search uses shield or basic auth, add the shield user name and password here for kibana
+#kibana_elasticsearch_username: user
+#kibana_elasticsearch_password: pass
+
+#Nginx Support
+
+#If kibana behind Nginx, configure Ngnix username password for kibana here
+#skedler_nginx_kibana_username: user
+#skedler_nginx_kibana_password: pass
+
+# if elasticsearch behind Ngnix, configure Ngnix username password for elasticsearch here
+#skedler_nginx_elasticsearch_username: user
+#skedler_nginx_elasticsearch_password: pass
+
+
+# Reports home directory
+#reports_dir: "/opt/skedlerreports"
+
+#Elasticsearch ping timeout setting in milliseconds
+#pingTimeout: 1500
+
+#Elasticsearch request timeout setting in milliseconds
+#This must be > 0
+#requestTimeout: 300000

@@ -1,0 +1,39 @@
+cron
+
+
+cat /letsencrypt_retrieve_keys.cron /nginx_restart.cron > /tmp/cron.tab
+
+crontab /tmp/cron.tab
+
+bash letsencrypt_retrieve_keys.sh
+
+if [ -z "$LOCAL_RUN" ]; then
+  rm -rf /etc/nginx/conf.d-local
+fi
+
+(inotifywait -m -r '/opt/containers/' -e create -e moved_to | grep --line-buffered nginx | grep --line-buffered -E '.conf$' | while read path action file; do
+    nginx -s reload
+done;) &
+
+(inotifywait -m -r '/etc/letsencrypt/live/' -e create -e moved_to | grep --line-buffered nginx | grep --line-buffered -E '.pem$' | while read path action file; do
+    bash /letsencrypt_retrieve_keys.sh
+    nginx -s reload
+done;) &
+
+if [ -S /usr/lib/systemd/system/host/docker.socket ]; then
+  ln -s /usr/lib/systemd/system/host/docker.socket /var/run/docker.sock
+fi
+
+if [ -S /var/run/host/docker.sock ]; then
+  ln -s /var/run/host/docker.sock /var/run/docker.sock
+fi
+
+(while true; do bash /docker_hostnames.sh; sleep 5; done &)
+
+service dnsmasq start
+
+service nginx start
+
+nginx -s reload
+
+sleep infinity

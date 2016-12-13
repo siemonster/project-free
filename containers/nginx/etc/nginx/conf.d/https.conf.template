@@ -1,0 +1,18 @@
+{{#ssl_hosts}}
+server {
+    listen 443 ssl;
+    server_name {{.}};
+
+    ssl_certificate     /etc/letsencrypt/live/{{.}}/fullchain.pem;
+    ssl_certificate_key /etc/letsencrypt/live/{{.}}/privkey.pem;
+
+    location / {
+        proxy_pass http://localhost;
+        proxy_set_header Host $http_host;
+        proxy_http_version 1.1;
+        proxy_set_header Upgrade $http_upgrade;
+        proxy_set_header Connection "upgrade";
+    }
+}
+{{/ssl_hosts}}
+
