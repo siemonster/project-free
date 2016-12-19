@@ -1,4 +1,13 @@
-FROM ubuntu
-RUN apt-get update && apt-get install -y nodejs npm curl && npm install elasticdump
+FROM ubuntu:14.04
+
+RUN apt-get update -qq && apt-get install -y software-properties-common
+
+RUN apt-add-repository ppa:chris-lea/node.js
+
+RUN apt-get update -qq && apt-get install -y nodejs
+
+RUN npm install -g elasticdump
+
 COPY /root /root
+
 CMD bash -c "cd /root/elasticloader; ./kibana-loader.sh"
