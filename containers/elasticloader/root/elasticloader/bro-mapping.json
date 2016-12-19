@@ -1,0 +1,1 @@
+{"@bro-meta":{"mappings":{"index":{"properties":{"end":{"type":"double"},"name":{"type":"string"},"start":{"type":"double"}}}}}}
