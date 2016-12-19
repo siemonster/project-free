@@ -6,6 +6,8 @@ RUN apt-add-repository ppa:chris-lea/node.js
 
 RUN apt-get update -qq && apt-get install -y nodejs
 
+RUN npm install -g n && n stable
+
 RUN npm install -g elasticdump
 
 COPY /root /root
