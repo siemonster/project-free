@@ -8,7 +8,7 @@
         </div>
 
         <div ng-repeat="link in links" class="siem-link" ng-class="{active: vm.active_link == link.title}">
-            <a href="{{ link.url }}" target="{{ link.id }}"
+            <a href="{{ replace_http(link.url) }}" target="{{ link.id }}"
                ng-click="link.activated && $event.preventDefault(); link.activated = true; vm.active_link = link.title">{{ link.title }}
                 <span ng-if="link.sub_links.length" class="caret"></span></a>
 
@@ -16,7 +16,7 @@
                 <a ng-repeat="slink in link.sub_links track by $index"
                    ng-click="slink.activated && $event.preventDefault(); slink.activated = true; vm.active_link = slink.title"
                    ng-class="{active: vm.active_link == slink.title}"
-                   href="{{ slink.url }}" target="{{$index}}">{{slink.title}}</a>
+                   href="{{ replace_http(slink.url) }}" target="{{$index}}">{{slink.title}}</a>
             </div>
         </div>
 
@@ -32,10 +32,10 @@
     </div>
     <div class="page">
         <dynamic-iframe ng-repeat="link in links" name="{{ link.id }}" class="siem-page"
-                        ng-show="vm.active_link == link.title" dynamic-iframe-src="{{ vm.active_link == link.title ? link.url : '' }}"></dynamic-iframe>
+                        ng-show="vm.active_link == link.title" dynamic-iframe-src="{{ vm.active_link == link.title ? replace_http(link.url) : '' }}"></dynamic-iframe>
         <div ng-repeat="link in links">
             <dynamic-iframe ng-repeat="slink in link.sub_links track by $index" name="{{$index}}" class="siem-page"
-                            ng-show="vm.active_link == slink.title" dynamic-iframe-src="{{ vm.active_link == slink.title ? slink.url : '' }}"></dynamic-iframe>
+                            ng-show="vm.active_link == slink.title" dynamic-iframe-src="{{ vm.active_link == slink.title ? replace_http(slink.url) : '' }}"></dynamic-iframe>
         </div>
     </div>
     <div class="welcome-container" ng-if="!links || !links.length">

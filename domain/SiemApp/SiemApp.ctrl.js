@@ -4,6 +4,8 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
     $scope.links = [];
     $scope.vm.SiemAuth = SiemAuth;
 
+    $scope.replace_http = function(it) { return it.replace(/^https?:/,'');};
+
     var handlers411, handlers_ir, handlers_minemeld;
 
     function createQueue(array) {

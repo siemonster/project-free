@@ -5,6 +5,8 @@ SiemApp.controller('SiemAppWelcome', function($scope, SiemAuth, $state) {
     $scope.vm = {};
     $scope.vm.loading = true;
 
+    $scope.replace_http = function(it) { return it.replace(/^https?:/,'');};
+
     SiemAuth.checkLogin(function(loggedin) {
 
         $scope.vm.loading = false;
