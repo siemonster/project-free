@@ -1,6 +1,6 @@
 FROM ubuntu:14.04
 
-RUN apt-get update -qq && apt-get install -y software-properties-common
+RUN apt-get update -qq && apt-get install -y software-properties-common curl
 
 RUN apt-add-repository ppa:chris-lea/node.js
 
