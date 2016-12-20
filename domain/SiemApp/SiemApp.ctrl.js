@@ -119,7 +119,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                 handlers411 = [
                     { // wait
                         fn: function() {
-                            return waitIframeIdReady(document.querySelector('iframe[src="' + link.url + '"]'));
+                            return waitIframeIdReady(document.querySelector('iframe[src="' + $scope.replace_http(link.url) + '"]'));
                         }
                     },
                     {
@@ -130,7 +130,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                                     location.href = '/login';
                                 },
                                 link
-                            ).postToFrame('iframe[src="' + link.url + '"]');
+                            ).postToFrame('iframe[src="' + $scope.replace_http(link.url) + '"]');
                         }
                     },
                     {
@@ -142,7 +142,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                     },
                     { // wait
                         fn: function() {
-                            return waitIframeIdReady(document.querySelector('iframe[src="' + link.url + '"]'));
+                            return waitIframeIdReady(document.querySelector('iframe[src="' + $scope.replace_http(link.url) + '"]'));
                         }
                     },
                     {
@@ -170,7 +170,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                                     })();
                                 },
                                 link
-                            ).postToFrame('iframe[src="' + link.url + '"]')
+                            ).postToFrame('iframe[src="' + $scope.replace_http(link.url) + '"]')
                         }
                     }
                 ];
@@ -178,7 +178,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                 handlers_ir = [
                     { // wait
                         fn: function() {
-                            return waitIframeIdReady(document.querySelector('iframe[src="' + link.url + '"]'));
+                            return waitIframeIdReady(document.querySelector('iframe[src="' + $scope.replace_http(link.url) + '"]'));
                         }
                     },
                     {
@@ -198,7 +198,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                                     })();
                                 },
                                 link
-                            ).postToFrame('iframe[src="' + link.url + '"]')
+                            ).postToFrame('iframe[src="' + $scope.replace_http(link.url) + '"]')
                         }
                     }
                 ];
@@ -206,7 +206,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                 handlers_minemeld = [
                     { // wait
                         fn: function() {
-                            return waitIframeIdReady(document.querySelector('iframe[src="' + link.url + '"]'));
+                            return waitIframeIdReady(document.querySelector('iframe[src="' + $scope.replace_http(link.url) + '"]'));
                         }
                     },
                     {
@@ -223,7 +223,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                                     })();
                                 },
                                 link
-                            ).postToFrame('iframe[src="' + link.url + '"]');
+                            ).postToFrame('iframe[src="' + $scope.replace_http(link.url) + '"]');
                         }
                     },
                     {
@@ -235,7 +235,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                     },
                     { // wait
                         fn: function() {
-                            return waitIframeIdReady(document.querySelector('iframe[src="' + link.url + '"]'));
+                            return waitIframeIdReady(document.querySelector('iframe[src="' + $scope.replace_http(link.url) + '"]'));
                         }
                     },
                     {
@@ -251,7 +251,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                                     })();
                                 },
                                 link
-                            ).postToFrame('iframe[src="' + link.url + '"]');
+                            ).postToFrame('iframe[src="' + $scope.replace_http(link.url) + '"]');
                         }
                     },
                     {
@@ -272,7 +272,7 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
                                     })();
                                 },
                                 link
-                            ).postToFrame('iframe[src="' + link.url + '"]')
+                            ).postToFrame('iframe[src="' + $scope.replace_http(link.url) + '"]')
                         }
                     }
                 ];
