@@ -1,2 +1,2 @@
-FROM balabit/syslog-ng:latest
+FROM balabit/syslog-ng:3.6
 COPY /etc /etc
