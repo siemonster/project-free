@@ -5,7 +5,7 @@ port: 3000
 host: "0.0.0.0"
 
 # Kibana url specification
-Kibana_url: "http://siemonster.corp.zenefits.com/#/app/Dashboards/"
+Kibana_url: "http://siemonster.kibana.com/#/app/Dashboards/"
 
 # The Elasticsearch instance to use for all your queries.
 elasticsearch_url: "http://es-client:9200"
