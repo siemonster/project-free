@@ -1,0 +1,319 @@
+{
+  "order" : 0,
+  "template": "cisco-fw-*",
+  "settings": {
+     "index.refresh_interval": "5s"
+
+},
+    "mappings" : {
+      "syslog" : {
+        "properties" : {
+          "@timestamp" : {
+            "type" : "date",
+            "format" : "strict_date_optional_time||epoch_millis"
+          },
+          "@version" : {
+            "type" : "string"
+          },
+          "DestinationGeo" : {
+            "properties" : {
+              "area_code" : {
+                "type" : "long"
+              },
+              "city_name" : {
+                "type" : "string"
+              },
+              "continent_code" : {
+                "type" : "string"
+              },
+              "country_code2" : {
+                "type" : "string",
+                "index" : "not_analyzed"
+              },
+              "country_code3" : {
+                "type" : "string",
+                "index" : "not_analyzed"
+              },
+              "country_name" : {
+                "type" : "string",
+                "index" : "not_analyzed"
+              },
+              "dma_code" : {
+                "type" : "long"
+              },
+              "ip" : {
+                "type" : "string"
+              },
+              "latitude" : {
+                "type" : "double"
+              },
+              "location" : {
+                "type" : "geo_point"
+              },
+              "longitude" : {
+                "type" : "double"
+              },
+              "postal_code" : {
+                "type" : "string"
+              },
+              "real_region_name" : {
+                "type" : "string"
+              },
+              "region_name" : {
+                "type" : "string"
+              },
+              "timezone" : {
+                "type" : "string"
+              }
+            }
+          },
+          "SourceGeo" : {
+            "properties" : {
+              "area_code" : {
+                "type" : "long"
+              },
+              "city_name" : {
+                "type" : "string"
+              },
+              "continent_code" : {
+                "type" : "string"
+              },
+              "country_code2" : {
+                "type" : "string",
+                "index" : "not_analyzed"
+              },
+              "country_code3" : {
+                "type" : "string",
+                "index" : "not_analyzed"
+              },
+              "country_name" : {
+                "type" : "string",
+                "index" : "not_analyzed"
+              },
+              "dma_code" : {
+                "type" : "long"
+              },
+              "ip" : {
+                "type" : "string"
+              },
+              "latitude" : {
+                "type" : "double"
+              },
+              "location" : {
+                "type" : "geo_point"
+              },
+              "longitude" : {
+                "type" : "double"
+              },
+              "postal_code" : {
+                "type" : "string"
+              },
+              "real_region_name" : {
+                "type" : "string"
+              },
+              "region_name" : {
+                "type" : "string"
+              },
+              "timezone" : {
+                "type" : "string"
+              }
+            }
+          },
+          "action" : {
+            "type" : "string",
+            "index" : "not_analyzed"
+          },
+          "direction" : {
+            "type" : "string"
+          },
+          "drop_rate_current_avg" : {
+            "type" : "string"
+          },
+          "drop_rate_current_burst" : {
+            "type" : "string"
+          },
+          "drop_rate_id" : {
+            "type" : "string"
+          },
+          "drop_rate_max_avg" : {
+            "type" : "string"
+          },
+          "drop_rate_max_burst" : {
+            "type" : "string"
+          },
+          "drop_total_count" : {
+            "type" : "string"
+          },
+          "drop_type" : {
+            "type" : "string"
+          },
+          "dst_interface" : {
+            "type" : "string"
+          },
+          "dst_ip" : {
+            "type" : "string"
+          },
+          "dst_port" : {
+            "type" : "string"
+          },
+          "err_dst_interface" : {
+            "type" : "string"
+          },
+          "err_dst_ip" : {
+            "type" : "string"
+          },
+          "err_icmp_code" : {
+            "type" : "string"
+          },
+          "err_icmp_type" : {
+            "type" : "string"
+          },
+          "err_protocol" : {
+            "type" : "string"
+          },
+          "err_src_fwuser" : {
+            "type" : "string"
+          },
+          "err_src_interface" : {
+            "type" : "string"
+          },
+          "err_src_ip" : {
+            "type" : "string"
+          },
+          "fingerprint" : {
+            "type" : "string"
+          },
+          "geoip_src" : {
+            "properties" : {
+              "area_code" : {
+                "type" : "long"
+              },
+              "city_name" : {
+                "type" : "string"
+              },
+              "continent_code" : {
+                "type" : "string"
+              },
+              "coordinates" : {
+                "type" : "double"
+              },
+              "country_code2" : {
+                "type" : "string"
+              },
+              "country_code3" : {
+                "type" : "string"
+              },
+              "country_name" : {
+                "type" : "string"
+              },
+              "dma_code" : {
+                "type" : "long"
+              },
+              "ip" : {
+                "type" : "string"
+              },
+              "latitude" : {
+                "type" : "double"
+              },
+              "location" : {
+                "type" : "double"
+              },
+              "longitude" : {
+                "type" : "double"
+              },
+              "postal_code" : {
+                "type" : "string"
+              },
+              "real_region_name" : {
+                "type" : "string"
+              },
+              "region_name" : {
+                "type" : "string"
+              },
+              "timezone" : {
+                "type" : "string"
+              }
+            }
+          },
+          "hashcode1" : {
+            "type" : "string"
+          },
+          "hashcode2" : {
+            "type" : "string"
+          },
+          "host" : {
+            "type" : "string"
+          },
+          "icmp_code" : {
+            "type" : "string"
+          },
+          "icmp_type" : {
+            "type" : "string"
+          },
+          "interface" : {
+            "type" : "string"
+          },
+          "orig_dst_ip" : {
+            "type" : "string"
+          },
+          "orig_dst_port" : {
+            "type" : "string"
+          },
+          "orig_src_ip" : {
+            "type" : "string"
+          },
+          "orig_src_port" : {
+            "type" : "string"
+          },
+          "policy_id" : {
+            "type" : "string"
+          },
+          "port" : {
+            "type" : "long"
+          },
+          "protocol" : {
+            "type" : "string"
+          },
+          "reason" : {
+            "type" : "string"
+          },
+          "received_at" : {
+            "type" : "string"
+          },
+          "src_interface" : {
+            "type" : "string"
+          },
+          "src_ip" : {
+            "type" : "string"
+          },
+          "src_port" : {
+            "type" : "string"
+          },
+          "syslog_facility" : {
+            "type" : "string"
+          },
+          "syslog_facility_code" : {
+            "type" : "long"
+          },
+          "syslog_host" : {
+            "type" : "string"
+          },
+          "syslog_severity" : {
+            "type" : "string"
+          },
+          "syslog_severity_code" : {
+            "type" : "long"
+          },
+          "syslog_timestamp" : {
+            "type" : "string"
+          },
+          "tags" : {
+            "type" : "string"
+          },
+          "type" : {
+            "type" : "string"
+          }
+        }
+      }
+    }
+  }
