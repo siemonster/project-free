@@ -1,11 +1,34 @@
 <div ng-controller="SiemAppWelcome" class="SiemAppWelcome">
-    <div class="container siem-top-panel">
-        <div class="siem-link">
-            <a ui-sref="welcome">Home</a>
+
+    <!-- side menu -->
+    <div id="mySidenav" class="container" style="height: 100%; width: 0; position: fixed; z-index: 1; top: 0; left: 0; background-color: #111; overflow-x: hidden; padding-top: 60px; transition: 0.5s;">
+        <div>
+            <script>
+                function closeNav() {
+                    document.getElementById("mySidenav").style.width = "0";
+                }
+            </script>
+            <a href="javascript:void(0)" onclick="closeNav()" style="position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;">&times;</a>
         </div>
-        <div ng-repeat="link in links" class="siem-link">
+        <div>
+            <a ui-sref="welcome" style="padding: 8px 8px 8px 32px; text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s">Home</a>
+        </div>
+        <div ng-repeat="link in links" style="padding: 8px 8px 8px 32px; text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s">
             <a ui-sref="app({linkId: link.title})">{{ link.title }}</a>
         </div>
+    </div>
+    <!-- /side menu -->
+    <div class="container siem-top-panel">
+        <!-- menu button -->
+        <div class="siem-link">
+            <script>
+                function openNav() {
+                    document.getElementById("mySidenav").style.width = "250px";
+                }
+            </script>
+            <a href="javascript:void(0)" onclick="openNav()">Menu</a>
+        </div>
+        <!-- /menu button -->
         <div class="siem-link logout-link">
             <a ng-click="logout()">Logout</a>
         </div>
@@ -14,9 +37,12 @@
         </div>
     </div>
 
-    <div class="welcome-wrapper">
-        <div class="welcome-left-links">
-            <div ng-repeat="link in links track by $index" ng-if="$index%2==1" class="dashboard-preview-wrapper">
+    <!-- main view -->
+    <div style="top: 50px; height: calc(100% - 100px);">
+        <!-- column 1 -->
+        <div style="float: left; max-width: 475px; margin:5px; padding:15px; margin-bottom: 50px;">
+            <!-- dashboard preview -->
+            <div ng-repeat="link in links track by $index" ng-if="$index%2==1" style="display: inline-block; max-width: 200px; margin: 1rem 1.5rem;">
                 <div class="dashboard-preview" ng-if="!link.sub_links">
                     <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.title})">{{link.title}}</div>
                 </div>
@@ -28,27 +54,12 @@
                             <a role="menuitem" ui-sref="app({linkId: link.title, slinkId: slink.title})">{{slink.title}}</a></li>
                     </ul>
                 </div>
-                <dynamic-iframe dynamic-iframe-src="{{replace_http(link.url)}}" id="{{link.type}}"></dynamic-iframe>
-            </div>
-        </div>
-        <div class="welcome-right-links">
-            <div ng-repeat="link in links track by $index" ng-if="$index%2==0" class="dashboard-preview-wrapper">
-                <div class="dashboard-preview" ng-if="!link.sub_links">
-                    <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.title})">{{link.title}}</div>
-                </div>
-                <div class="dashboard-preview dropdown" dropdown-append-to-body uib-dropdown is-open="status.isopen"
-                     ng-class="'dropdown'" ng-if="link.sub_links" >
-                    <div class="sm-welcome-link btn btn-default" uib-dropdown-toggle>{{link.title}}&nbsp;<span class="caret"></span></div>
-                    <ul class="dropdown-menu" uib-dropdown-menu role="menu">
-                        <li role="presentation" ng-repeat="slink in link.sub_links track by $index">
-                            <a role="menuitem" ui-sref="app({linkId: link.title, slinkId: slink.title})">{{slink.title}}</a></li>
-                    </ul>
-                </div>
-                <dynamic-iframe dynamic-iframe-src="{{replace_http(link.url)}}" id="{{link.type}}"></dynamic-iframe>
+                <dynamic-iframe dynamic-iframe-src="{{replace_http(link.url)}}" id="{{link.type}}" style="display: block; overflow: hidden; height: 20rem;"></dynamic-iframe>
             </div>
         </div>
 
-        <div class="welcome-container">
+        <!-- column 2 -->
+        <div style="float: left; max-width: 475px; margin:5px; padding:15px; margin-bottom: 50px;">
             <div class="siem-logo">
                 <img src="/domain/UI/logos/SIEMonster_1.png" />
             </div>
@@ -90,12 +101,33 @@
                         <!--<a ng-click="logout()">Logout</a>-->
                     <!--</div>-->
                     <!--<h3>SIEMonster is a turnkey, open source, enterprise grade Security Incident and Event Management (SIEM), built on scalable, non-licensed components.</h3>-->
-                    <h3>SIEM For everyone</h3>
+                    <h3 style="text-align: center;">SIEM For everyone</h3>
                 </div>
             </div>
         </div>
+
+        <!-- column 3 -->
+        <div style="float: left; max-width: 475px; margin:5px; padding:15px; margin-bottom: 50px;">
+            <div ng-repeat="link in links track by $index" ng-if="$index%2==0" style="display: inline-block; max-width: 200px; margin: 1rem 1.5rem;">
+                <div class="dashboard-preview" ng-if="!link.sub_links">
+                    <div class="sm-welcome-link btn btn-default" ui-sref="app({linkId: link.title})">{{link.title}}</div>
+                </div>
+                <div class="dashboard-preview dropdown" dropdown-append-to-body uib-dropdown is-open="status.isopen"
+                     ng-class="'dropdown'" ng-if="link.sub_links" >
+                    <div class="sm-welcome-link btn btn-default" uib-dropdown-toggle>{{link.title}}&nbsp;<span class="caret"></span></div>
+                    <ul class="dropdown-menu" uib-dropdown-menu role="menu">
+                        <li role="presentation" ng-repeat="slink in link.sub_links track by $index">
+                            <a role="menuitem" ui-sref="app({linkId: link.title, slinkId: slink.title})">{{slink.title}}</a></li>
+                    </ul>
+                </div>
+                <dynamic-iframe dynamic-iframe-src="{{replace_http(link.url)}}" id="{{link.type}}" style="display: block; overflow: hidden; height: 20rem;"></dynamic-iframe>
+            </div>
+        </div>
+
     </div>
-    <div class="footer-wrapper">
-        <div class="footer-copyrights">&copy; Copyright SIEMonster Inc. 2016</div>
+
+    <!-- footer for copyright -->
+    <div style="position: absolute; right: 0; bottom: 0; left: 0; padding: 1rem; background-color: #efefef; text-align: center;">
+        &copy; Copyright SIEMonster Inc. 2017
     </div>
 </div>
