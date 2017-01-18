@@ -1,32 +1,22 @@
 <div ng-controller="SiemAppWelcome" class="SiemAppWelcome">
 
     <!-- side menu -->
-    <div id="mySidenav" class="container" style="height: 100%; width: 0; position: fixed; z-index: 1; top: 0; left: 0; background-color: #111; overflow-x: hidden; padding-top: 60px; transition: 0.5s;">
+    <div id="mySidenav" style="height: 100%; width: 0; position: fixed; z-index: 1; top: 0; left: 0; background-color: #111; overflow-x: hidden; padding-top: 60px; transition: 0.5s;">
         <div>
-            <script>
-                function closeNav() {
-                    document.getElementById("mySidenav").style.width = "0";
-                }
-            </script>
-            <a href="javascript:void(0)" onclick="closeNav()" style="position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;">&times;</a>
+            <a onclick='document.getElementById("mySidenav").style.width = "0";' style="position: absolute; top: 0; right: 25px; font-size: 36px; margin-left: 50px;">&times;</a>
         </div>
         <div>
             <a ui-sref="welcome" style="padding: 8px 8px 8px 32px; text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s">Home</a>
         </div>
-        <div ng-repeat="link in links" style="padding: 8px 8px 8px 32px; text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s">
-            <a ui-sref="app({linkId: link.title})">{{ link.title }}</a>
+        <div ng-repeat="link in links">
+            <a ui-sref="app({linkId: link.title})" style="padding: 8px 8px 8px 32px; text-decoration: none; font-size: 25px; color: #818181; display: block; transition: 0.3s">{{ link.title }}</a>
         </div>
     </div>
     <!-- /side menu -->
     <div class="container siem-top-panel">
         <!-- menu button -->
         <div class="siem-link">
-            <script>
-                function openNav() {
-                    document.getElementById("mySidenav").style.width = "250px";
-                }
-            </script>
-            <a href="javascript:void(0)" onclick="openNav()">Menu</a>
+            <a onclick='document.getElementById("mySidenav").style.width = "250px";'>Menu</a>
         </div>
         <!-- /menu button -->
         <div class="siem-link logout-link">
