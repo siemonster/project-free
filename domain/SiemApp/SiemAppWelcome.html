@@ -7,8 +7,14 @@
     </div>
 
     <div class="container siem-top-panel">
-        <div class="siem-link">
+        <div class="siem-link" ng-if="linksWidth>=windowWidth">
             <a onclick='document.getElementById("mySidenav").style.width = "275px";'><img src="/domain/SiemApp/hamburger.png" style="max-width: 50px;" /></a>
+        </div>
+        <div class="siem-link" ng-if="linksWidth<windowWidth">
+            <a ui-sref="welcome">Home</a>
+        </div>
+        <div ng-repeat="link in links" class="siem-link" ng-if="linksWidth<windowWidth">
+            <a ui-sref="app({linkId: link.title})">{{ link.title }}</a>
         </div>
         <div class="siem-link logout-link">
             <a ng-click="logout()">Logout</a>
@@ -100,6 +106,6 @@
         </div>
     </div>
     <div class="footer-wrapper">
-        <div class="footer-copyrights">&copy; Copyright SIEMonster Inc. 2017</div>
+        <div class="footer-copyrights">&copy; Copyright SIEMonster Inc. 2016</div>
     </div>
 </div>
