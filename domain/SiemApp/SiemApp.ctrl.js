@@ -1,8 +1,15 @@
-SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) {
+SiemApp.controller('SiemApp', function ($scope, $window, $timeout, SiemAuth, $state, $stateParams) {
 
     $scope.vm = {};
     $scope.links = [];
     $scope.vm.SiemAuth = SiemAuth;
+
+    $scope.windowWidth = $window.innerWidth;
+    $window.onresize = function(event) {
+        $timeout(function() {
+        $scope.windowWidth = $window.innerWidth;
+        });
+    };
 
     $scope.replace_http = function(it) { return it.replace(/^https?:/,'');};
 
@@ -54,8 +61,13 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
             return;
         }
 
+        $scope.linksWidth = 0;
+
         var j = 1;
         for (var i in SiemAuth.User.frames) if (SiemAuth.User.frames.hasOwnProperty(i)) {
+
+            $scope.linksWidth += 40 + (i.length * 7);
+
             if (typeof SiemAuth.User.frames[i] == 'string') {
                 $scope.links.push({title: i, url: SiemAuth.User.frames[i], id: 'link' + j});
             } else if (typeof SiemAuth.User.frames[i] == 'object') {
@@ -72,6 +84,10 @@ SiemApp.controller('SiemApp', function ($scope, SiemAuth, $state, $stateParams) 
             }
             j++;
         }
+
+        $scope.linksWidth += 40 + ("Home".length * 8);
+        $scope.linksWidth += 40 + ("Logout".length * 10);
+        $scope.linksWidth += 40 + ("Profile".length * 10);
 
         if ($stateParams.slinkId) {
             var link = $scope.links.filter(function (it) {
