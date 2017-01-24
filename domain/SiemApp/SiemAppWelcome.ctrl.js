@@ -53,8 +53,6 @@ SiemApp.controller('SiemAppWelcome', function($scope, $window, $timeout, SiemAut
         $scope.linksWidth += 40 + ("Home".length * 8);
         $scope.linksWidth += 40 + ("Logout".length * 10);
         $scope.linksWidth += 40 + ("Profile".length * 10);
-
-        console.log($scope.linksWidth);
         
         $scope.$$phase || $scope.$apply();
     });
