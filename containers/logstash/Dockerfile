@@ -1,3 +1,3 @@
-FROM ikuturso/logstash:2.4.1
-COPY /config /tmp/config
-RUN cp -r /tmp/config /config-dir
+FROM ikuturso/logstash:ssl
+COPY /config /config-dir
+RUN bash -c "openssl req -x509 -batch -nodes -days 3650 -newkey rsa:2048 -keyout /etc/pki/tls/private/logstash-forwarder.key -out /etc/pki/tls/certs/logstash-forwarder.crt -subj /CN=$SERVER_CN"
