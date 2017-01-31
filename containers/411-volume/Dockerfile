@@ -1,4 +1,4 @@
-FROM ikuturso/siemonster-411
+FROM ikuturso/siemonster-411:1.2
 COPY /data /data
 RUN chmod g+w /data
 RUN chmod g+w /data/data.db
