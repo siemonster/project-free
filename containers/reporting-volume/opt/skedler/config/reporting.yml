@@ -15,7 +15,7 @@ skedler_index: ".skedler2"
 
 #Kibana uses an index in Elasticsearch to all data. Configure kibana index here. skedler will use this index to auto discover dashbaords.
 #skedler will not create this index
-kibana_index: ".kibi"
+kibana_index: ".kibana"
 
 #Kibana version is needed to get kibana config for report generation
 kibana_version: "4.5.4"
