@@ -10,4 +10,4 @@ elasticdump --input=kibana-mapping.json --output=http://es-client:9200/.kibana -
 elasticdump --input=kibana-data.json --output=http://es-client:9200/.kibana --type=data
 curl -XPUT 'http://es-client:9200/_template/dockbeat' -d@dockbeat.template.json
 curl -XDELETE 'http://es-client:9200/dockbeat*'
-curl 'http://es-client:9200/_template/cisco-fw' -d@cisco-fw-mapping.json
+curl -XPUT 'http://es-client:9200/_template/cisco-fw' -d@cisco-fw-mapping.json
