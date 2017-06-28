@@ -1,2 +1,2 @@
-FROM ikuturso/reporting:2.5
+FROM ikuturso/siemonster-reporting-4
 COPY /opt /opt
