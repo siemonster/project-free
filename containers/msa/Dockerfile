@@ -1,4 +1,4 @@
-FROM extremeprog/mongo-sites-api:feature-admin-dbclone
+FROM ikuturso/mongo-sites-api:1.2
 
 COPY . /root/mongo-sites-api
 
