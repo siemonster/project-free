@@ -1,4 +1,4 @@
-FROM ikuturso/mongo-sites-api:1.2
+FROM ikuturso/mongo-sites-api
 
 COPY . /root/mongo-sites-api
 
