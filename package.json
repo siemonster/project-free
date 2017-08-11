@@ -5,7 +5,9 @@
   "main": "server.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
-    "start": "node server.js"
+    "start": "node server.js",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "author": "",
   "license": "MIT",
@@ -25,6 +27,8 @@
     "gulp-sourcemaps": "^1.6.0",
     "gulp-tap": "^0.1.3",
     "gulp-uglify": "^2.0.0",
-    "watchman": "^0.1.8"
-  }
+    "watchman": "^0.1.8",
+    "snyk": "^1.38.1"
+  },
+  "snyk": true
 }
